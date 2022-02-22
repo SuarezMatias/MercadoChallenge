@@ -1,0 +1,46 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+meliFront/dist
+meliFront/tmp
+meliFront/out-tsc
+# Only exists if Bazel was run
+meliFront/bazel-out
+
+# dependencies
+meliFront/node_modules
+
+# profiling files
+meliFront/chrome-profiler-events*.json
+meliFront/speed-measure-plugin*.json
+
+# IDEs and editors
+meliFront/.idea
+meliFront/.project
+meliFront/.classpath
+meliFront/.c9/
+meliFront/*.launch
+meliFront/.settings/
+meliFront/*.sublime-workspace
+
+# IDE - VSCode
+meliFront/.vscode/*
+meliFront/!.vscode/settings.json
+meliFront/!.vscode/tasks.json
+meliFront/!.vscode/launch.json
+meliFront/!.vscode/extensions.json
+meliFront/.history/*
+
+# misc
+meliFront/.sass-cache
+meliFront/connect.lock
+meliFront/coverage
+meliFront/libpeerconnection.log
+meliFront/npm-debug.log
+meliFront/yarn-error.log
+meliFront/testem.log
+meliFront//typings
+
+# System Files
+meliFront/.DS_Store
+meliFront/Thumbs.db
