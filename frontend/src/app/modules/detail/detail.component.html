@@ -1,0 +1,30 @@
+<div class="wrapper-main">
+    <app-header
+    (sendSearchEvent)="sendSearch($event)">
+    </app-header>
+
+    <div class="container">
+        <app-categories-bar></app-categories-bar>
+        <div class="container-results" *ngIf="data">
+            <div class="row">
+                <div class="col-lg-8 text-center">
+                    <img [src]="data.picture" alt="">
+                </div>
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column">
+                        <div class="specifications">
+                            <span>{{ data.condition == 'new' ? 'Nuevo' : 'Usado'}}</span>
+                            <span>-</span>
+                            <span *ngIf="data.sold_quantity > 0">{{ data.sold_quantity }} vendidos</span>
+                        </div>
+                        <h2>{{ data.title }}</h2>
+                        <div>
+                            <span>{{ data.price.currency }} {{ data.price.amount }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

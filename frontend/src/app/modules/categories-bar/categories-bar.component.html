@@ -1,0 +1,12 @@
+<div class="categories-bar">
+    <ol>
+        <li *ngFor="let item of items ; let i = index; last as isLast">
+            <a href="">
+                <span>{{ item }}</span>
+                <svg width="9" height="9" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="!isLast">
+                    <path d="M0.000437737 1.25152L1.25195 0L8.25195 7L1.25195 14L0.000437737 12.7485L5.74892 7L0.000437737 1.25152Z" fill="#0083E2"/>
+                </svg>
+            </a>
+        </li>       
+    </ol>
+</div>

@@ -1,0 +1,25 @@
+<app-header
+(sendSearchEvent)="sendSearch($event)">
+</app-header>
+
+<div class="container a">
+    <app-categories-bar></app-categories-bar>
+    <div class="container-results" *ngIf="items$ | async as results; else showSpinner">
+        <ng-container *ngIf="results.items; else initialState">
+            <app-list [items]="results.items"></app-list>
+        </ng-container>
+        <ng-template #initialState>
+            <div class="d-flex justify-content-center align-items-center">
+                <p>Hace una búsqueda Gato!</p>
+            </div>
+        </ng-template>
+    </div>        
+    <ng-template #showSpinner>
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </ng-template>
+</div>
+

@@ -1,0 +1,46 @@
+$padding-1: 16px
+$padding-2: 32px
+
+$border-1: 1px solid #EEEEEE
+
+
+.item-box
+    padding: $padding-1 0
+    border-bottom: .5px solid #EEEEEE
+    h2
+        font-size: 18px
+    .img-cont
+        width: 180px
+        height: 180px
+        padding-right: $padding-1        
+        .img-col
+            width: 180px
+            flex: 0 0 auto
+            img
+                width: 100%
+                object-fit: contain
+                border: .5px solid #EEEEEE //Remove then
+                border-radius: 4px
+    .right-col
+        display: flex
+        flex: auto        
+        .desc-col
+            width: 70%
+                
+            img
+                height: 100%
+                margin-left: .5rem
+            .price-row
+                margin-bottom: $padding-2
+                .price-spn
+                    font-size: 24px
+        .location-col
+            width: 30%
+        
+
+.notResults
+    margin: 5rem
+    text-align: center
+
+.border-x
+    border: $border-1

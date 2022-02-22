@@ -1,0 +1,26 @@
+$padding-1: 16px
+.categories-bar
+    padding: $padding-1 0
+    ol
+        margin: 0
+        padding-left: 0
+        display: flex
+        li
+            display: inline
+            &:first-child
+                span
+                    padding-left: 0
+            &:last-child
+                span
+                    padding-right: 0
+            a
+                text-decoration: none
+                color: #999999
+                &:hover
+                    color: #666666        
+            span 
+                font-size: 14px
+                padding: 0 .5rem           
+            svg
+                path
+                    fill: #999999

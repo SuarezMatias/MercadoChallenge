@@ -1,0 +1,26 @@
+
+
+<div class="d-flex flex-row item-box" *ngFor="let item of localItems; let i = index;">
+    <div class="img-col">
+        <div class="img-cont">
+            <a href="/items/{{ item.id }}">
+                <img [src]="item.picture" alt="imagen de producto" height="180" width="180">
+            </a>
+        </div>
+    </div>
+    <div class="right-col">
+        <div class="desc-col flex-column">
+            <div class="d-flex align-items-center price-row">
+                <span class="price-spn">{{ item.price.currency }} {{ item.price.amount }}</span>
+                <img src="/assets/img/ic_shipping.png" *ngIf="item.free_shipping">
+            </div>
+            <h2>{{ item.title }}</h2>
+        </div>
+        <div class="location-col">
+            <span>{{ item.address.state_name }}</span>
+        </div>
+    </div>
+</div>
+<div class="notResults" *ngIf="localItems.length === 0">        
+    <h2>No hay publicaciones que coincidan con tu búsqueda</h2>
+</div>
