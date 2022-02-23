@@ -29,7 +29,7 @@ import { DescriptionDataResolver } from './modules/detail/services/description.r
   imports: [
     NgbModule,
     FormsModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
