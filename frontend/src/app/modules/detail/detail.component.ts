@@ -17,7 +17,6 @@ export class DetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    debugger;
     this.data = this.route.snapshot.data.dataResolver.item;
     this.description = this.route.snapshot.data.descriptionResolver;
 

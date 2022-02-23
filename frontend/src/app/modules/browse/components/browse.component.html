@@ -2,7 +2,7 @@
 (sendSearchEvent)="sendSearch($event)">
 </app-header>
 
-<div class="container a">
+<div class="container">
     <app-categories-bar></app-categories-bar>
     <div class="container-results" *ngIf="items$ | async as results; else showSpinner">
         <ng-container *ngIf="results.items; else initialState">
@@ -10,7 +10,10 @@
         </ng-container>
         <ng-template #initialState>
             <div class="d-flex justify-content-center align-items-center">
-                <p>Hace una búsqueda Gato!</p>
+                <div class="initialState d-flex align-items-center">
+                    <img src="/assets/img/SearchCircle.png" width="150">
+                    <h2 class="ps-3">Encuentra productos, marcas y más...</h2>
+                </div>
             </div>
         </ng-template>
     </div>        

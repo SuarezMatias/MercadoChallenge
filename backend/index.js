@@ -9,9 +9,7 @@ app.use(cors());
 const api = "https://api.mercadolibre.com/"
 
 app.get("/api/items", (req, res) => {
-    debugger;
     request(`${api}/sites/MLA/search?q=${req.query.q}`,(err,response,body)=>{
-        debugger;
         if (!err){
             const search = JSON.parse(body);
             res.send(search)

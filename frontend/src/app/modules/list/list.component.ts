@@ -8,7 +8,6 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ListComponent implements OnInit {
 
   @Input() set items(values: any[]) {
-    debugger;
     this.localItems = values;
   };
   public localItems: any[];

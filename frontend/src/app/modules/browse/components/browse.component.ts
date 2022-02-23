@@ -13,8 +13,7 @@ import { SearchMapper } from '../../search-mapper';
 export class BrowseComponent implements OnInit {  
   
   items$: Observable<ItemSearch | boolean> ;
-  isEmpty = true;
-
+  
   constructor(
     private apiService: ApiService,
     private searchMapper: SearchMapper,
@@ -23,13 +22,12 @@ export class BrowseComponent implements OnInit {
 
   ngOnInit() {    
     this.route.params.subscribe(params => {  
-      this.items$ = params.search ?  this.apiService.search(params.search) : of(true);
-    });    
+      this.items$ = params.search ?  this.apiService.search(params.search) : of(true);      
+    });         
   }
 
   sendSearch($event) {
     if ($event != '') {
-      this.isEmpty = false;
       this.items$ = this.apiService.search($event);        
     }
   }

@@ -7,21 +7,30 @@
         <app-categories-bar></app-categories-bar>
         <div class="container-results" *ngIf="data">
             <div class="row">
-                <div class="col-lg-8 text-center">
+                <div class="col-lg-9 text-center">
                     <img [src]="data.picture" alt="">
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="d-flex flex-column">
                         <div class="specifications">
                             <span>{{ data.condition == 'new' ? 'Nuevo' : 'Usado'}}</span>
-                            <span>-</span>
+                            <span> - </span>
                             <span *ngIf="data.sold_quantity > 0">{{ data.sold_quantity }} vendidos</span>
                         </div>
                         <h2>{{ data.title }}</h2>
-                        <div>
+                        <div class="price">
                             <span>{{ data.price.currency }} {{ data.price.amount }}</span>
                         </div>
+                        <div class="button-cont">
+                            <button class="btn btn-lg">Comprar</button>
+                        </div>
                     </div>
+                </div>
+            </div>
+            <div class="row description">
+                <div class="col-lg-9">
+                    <h3>Descripción del producto</h3>
+                    <p>{{ description.plain_text }}</p>
                 </div>
             </div>
         </div>

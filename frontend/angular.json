@@ -10,8 +10,8 @@
           "style": "sass"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "",     
+      "sourceRoot": "src",      
       "prefix": "app",
       "architect": {
         "build": {

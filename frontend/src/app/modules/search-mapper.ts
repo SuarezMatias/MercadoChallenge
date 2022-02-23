@@ -13,7 +13,6 @@ import { Detail } from '../model/detail';
 export class SearchMapper {
 
     toItemSearch(itemList: Search) : ItemSearch {
-        debugger;
         return {
             author: {
                 name: 'Matias',

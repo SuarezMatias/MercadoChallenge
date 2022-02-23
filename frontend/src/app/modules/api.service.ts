@@ -21,7 +21,6 @@ export class ApiService {
   ) { }
 
     search(searchText: string) : Observable<ItemSearch> {
-      debugger;
       const urlPath = `${this.apiName}/items?q=${searchText}`        
       return this.httpClient.get(urlPath).pipe(
           map((data: Search) => this.searchMapper.toItemSearch(data))
