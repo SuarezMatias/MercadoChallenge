@@ -1,10 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ItemSearch } from 'src/app/model/ItemSearch';
 import { ApiService } from '../../api.service';
-import { SearchMapper } from '../../search-mapper';
 
 @Component({
   selector: 'app-browse',
@@ -27,15 +26,16 @@ export class BrowseComponent implements OnInit {
     });         
   }
 
-  handleError(error) {
+  handleError(error) : Observable<boolean> {
+    console.error(error);
     return of(true);
   }
 
-  sendSearch($event) {
-    if ($event !== '') {
+  sendSearch(searchTerm: string) {
+    if (searchTerm) {
       this.router.navigate([], {
         relativeTo: this.route,
-        queryParams: { search: $event },
+        queryParams: { search: searchTerm },
         queryParamsHandling: 'merge'
       })
     }

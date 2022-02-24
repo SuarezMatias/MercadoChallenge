@@ -28,4 +28,57 @@ describe('BrowseComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('#handleError', () => {
+    it('Should return an observable of true', () => {
+      //arrange
+      const error = 'error';
+
+      //act
+      component.handleError(error).subscribe(res => {        
+        //assert
+        expect(res).toBeTruthy();
+        expect(res).not.toBeFalsy();
+      });
+
+    });    
+  });
+  
+  describe('#sendSearch', () => {
+    it('Should not call routing navigate if param is null', () => {
+      //arrange
+      const searchTerm = null;
+      const spy = spyOn((component as any).router, 'navigate');
+
+      //act
+      component.sendSearch(searchTerm);
+
+      //assert
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('Should not call routing navigate if param is empty', () => {
+      //arrange
+      const searchTerm = '';
+      const spy = spyOn((component as any).router, 'navigate');
+
+      //act
+      component.sendSearch(searchTerm);
+
+      //assert
+      expect(spy).not.toHaveBeenCalled();
+    });
+    
+    it('Should navigate if searchTerm is provided', () => {
+      //arrange
+      const searchTerm = 'paleta';
+      const spy = spyOn((component as any).router, 'navigate');
+
+      //act
+      component.sendSearch(searchTerm);
+
+      //assert
+      expect(spy).toHaveBeenCalled();
+    });    
+  });   
 });
