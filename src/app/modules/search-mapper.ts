@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { JsonPipe } from '@angular/common';
 import { title } from 'process';
 import { Description, ItemDetail } from '../model/itemDetail';
-import { Result, Search } from '../model/Item';
+import { ItemFilter, ItemValue, Result, Search } from '../model/Item';
 import { Detail } from '../model/detail';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class SearchMapper {
                 name: 'Matias',
                 lastname: 'Suarez'
             },
-            categories: [],
+            categories: this.getCategories(itemList.filters) || [],
             items:  this.mapItems(itemList.results)
         }
     }
@@ -88,6 +88,20 @@ export class SearchMapper {
 
     getPicture(pictures, id) {
         return pictures.find(x => x.id === id).url
+    }
+
+    getCategories(filters: ItemFilter[]) : string [] {
+        const categories = filters.find(x => x.id == 'category')?.values
+        const categoriesArray: string [] = [];
+        console.log(categories) 
+        if(categories) {
+            categories.forEach(x => {
+                x.path_from_root.forEach(x => {
+                    categoriesArray.push(x.name);
+                });
+            }) 
+        }        
+        return categoriesArray;
     }
 	
 			

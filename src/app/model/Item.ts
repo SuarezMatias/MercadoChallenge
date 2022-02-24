@@ -7,13 +7,35 @@ export interface Search {
     results: Result[],
     sort: ItemValue,
     availables_sorts: ItemValue[],
-    filters: ItemValue[];
-    available_filters: ItemValue[];
+    filters: ItemFilter[];
+    available_filters: ItemAvailableFilter[];
 }
 
 export interface ItemValue {
     id: string,
     name: string,
+    results?: number,
+}
+
+export interface ItemFilter {
+    id: string,
+    name: string,
+    type: string
+    values: ItemFilterValue[]
+}
+
+export interface ItemFilterValue {
+    id: string,
+    name: string,
+    path_from_root: ItemValue[]
+}
+
+
+export interface ItemAvailableFilter extends ItemValue {   
+    id: string,
+    name: string,
+    type: string,
+    values?: ItemValue[],     
 }
 
 export interface Paging {

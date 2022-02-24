@@ -12,8 +12,7 @@ import { SearchMapper } from '../../search-mapper';
 })
 export class BrowseComponent implements OnInit {  
   
-  items$: Observable<ItemSearch | boolean> ;
-  
+  items$: Observable<ItemSearch | boolean>;
   constructor(
     private apiService: ApiService,
     private searchMapper: SearchMapper,
@@ -28,7 +27,8 @@ export class BrowseComponent implements OnInit {
 
   sendSearch($event) {
     if ($event != '') {
-      this.items$ = this.apiService.search($event);        
+      this.items$ = this.apiService.search($event);
+      console.log('ob:', this.items$)            
     }
   }
 

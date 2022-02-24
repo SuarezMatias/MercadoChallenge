@@ -3,7 +3,9 @@
 </app-header>
 
 <div class="container">
-    <app-categories-bar></app-categories-bar>
+    <div *ngIf="items$ | async as results">
+        <app-categories-bar [items]="results.categories" ></app-categories-bar>
+    </div>
     <div class="container-results" *ngIf="items$ | async as results; else showSpinner">
         <ng-container *ngIf="results.items; else initialState">
             <app-list [items]="results.items"></app-list>
