@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
@@ -9,35 +9,16 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { DetailComponent } from './detail.component';
 import { Description, Detail, ItemDetail } from 'src/app/model/itemDetail';
 import { Author } from 'src/app/model/ItemSearch';
-import { ActivatedRoute, Resolve, RouterModule } from '@angular/router';
-import { DetailDataResolver } from './services/detail.resolver';
-import { Mock } from 'protractor/built/driverProviders';
-import { Observable, of } from 'rxjs';
-import { Injectable } from '@angular/core';
-
-@Injectable()
-class MockDetailDataResolver implements Resolve<ItemDetail> {
-  constructor() {}
-  resolve(): Observable<ItemDetail> {
-    const detail = {} as ItemDetail;
-    return of(detail);
-  } 
-}
-
-@Injectable()
-class MockDescriptionDataResolver implements Resolve<Description> {
-  constructor() {}
-  resolve(): Observable<Description> {
-    const description = {} as Description;
-    return of(description);
-  } 
-}
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
+import { HeaderComponent } from '../header/components/header.component';
+import { CategoriesBarComponent } from '../categories-bar/categories-bar.component';
 
 describe('DetailComponent', () => {
   let component: DetailComponent;
   let fixture: ComponentFixture<DetailComponent>;
    
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ 
         NgbModule,
@@ -45,26 +26,26 @@ describe('DetailComponent', () => {
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
         HttpClientTestingModule,
         AppRoutingModule,
-        ReactiveFormsModule,
-        RouterModule.forRoot([
-          {
-            component: DetailComponent,
-            path: 'items/:itemId',
-            resolve: {
-              dataResolver: MockDetailDataResolver,
-              descriptionResolver: MockDescriptionDataResolver
-            },            
-          }
-        ])        
+        ReactiveFormsModule,               
        ],
-      declarations: [ DetailComponent ],
-      providers: [ {
+      declarations: [ DetailComponent, HeaderComponent, CategoriesBarComponent ],
+      providers: [{
         provide: ActivatedRoute,
-        useValue: { snapshot: {
-           params: { 'id': 'MLA1'}},           
+        useValue: {
+          snapshot: {
+            data: {
+              dataResolver: of({ id: 'MLA1'}),
+              descriptionResolver: of({
+                text: 'Description',
+                plain_text: 'Text',
+                last_updated: 'Date',
+                date_created: 'Date',
+                snapshot: null
+              }),
+            }
           }
-      },     
-     ]
+        }
+      }]
     })
     .compileComponents();
   }));

@@ -6,19 +6,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./categories-bar.component.sass']
 })
 export class CategoriesBarComponent implements OnInit {
-  @Input() items: string[]
-  // items = [
-  //   "Electronica, Audio y Video",
-  //   "Ipod",
-  //   "Reproductores",
-  //   "Ipod touch",
-  //   "32 GB"
-  // ];
-
-
+  
+  @Input() items: string[];
+  
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {    
   }
 
 }

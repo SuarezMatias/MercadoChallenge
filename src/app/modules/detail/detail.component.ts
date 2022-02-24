@@ -8,8 +8,9 @@ import { Description, ItemDetail } from 'src/app/model/itemDetail';
   styleUrls: ['./detail.component.sass']
 })
 export class DetailComponent implements OnInit {
-  data: ItemDetail;
-  description: Description;
+
+  public data: ItemDetail;
+  public description: Description;
 
   constructor(
     private route: ActivatedRoute,

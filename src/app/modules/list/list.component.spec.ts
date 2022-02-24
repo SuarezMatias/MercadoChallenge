@@ -16,10 +16,11 @@ describe('ListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ListComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    component.items = [];
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

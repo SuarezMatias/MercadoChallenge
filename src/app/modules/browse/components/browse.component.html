@@ -1,10 +1,8 @@
-<app-header
-(sendSearchEvent)="sendSearch($event)">
-</app-header>
+<app-header (sendSearchEvent)="sendSearch($event)"></app-header>
 
 <div class="container">
     <div *ngIf="items$ | async as results">
-        <app-categories-bar [items]="results.categories" ></app-categories-bar>
+        <app-categories-bar [items]="results.categories"></app-categories-bar>
     </div>
     <div class="container-results" *ngIf="items$ | async as results; else showSpinner">
         <ng-container *ngIf="results.items; else initialState">

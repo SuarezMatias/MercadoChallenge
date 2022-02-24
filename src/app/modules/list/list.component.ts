@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Item } from 'src/app/model/ItemSearch';
 
 @Component({
   selector: 'app-list',
@@ -7,10 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  @Input() set items(values: any[]) {
+  @Input() set items(values: Item[]) {
     this.localItems = values;
   };
-  public localItems: any[];
+  public localItems: Item[];
   
   constructor() { }
 

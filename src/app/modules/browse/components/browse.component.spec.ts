@@ -1,4 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
+import { AppModule } from 'src/app/app.module';
+import { CategoriesBarComponent } from '../../categories-bar/categories-bar.component';
+import { HeaderComponent } from '../../header/components/header.component';
 
 import { BrowseComponent } from './browse.component';
 
@@ -6,9 +10,11 @@ describe('BrowseComponent', () => {
   let component: BrowseComponent;
   let fixture: ComponentFixture<BrowseComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BrowseComponent ]
+      imports: [ AppModule ],
+      providers: [ FormBuilder ],
+      declarations: [ BrowseComponent, HeaderComponent, CategoriesBarComponent ]
     })
     .compileComponents();
   }));

@@ -1,7 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { ItemSearch } from 'src/app/model/ItemSearch';
-import { SearchMapper } from '../../search-mapper';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -12,12 +10,11 @@ export class HeaderComponent implements OnInit {
 
   @Output() sendSearchEvent: EventEmitter<string> = new EventEmitter<string>();
 
-  searchFormGroup: any;
-  searchText: string;
+  public searchFormGroup: FormGroup;
+  public searchText: string;
 
   constructor(
     private formBuilder: FormBuilder,
-    private searchMapper: SearchMapper,
   ) { }
 
   ngOnInit() {
@@ -27,15 +24,14 @@ export class HeaderComponent implements OnInit {
           Validators.maxLength(150),
         ],
         updateOn: 'change'
-      }],
-      
+      }],      
     });
 
   }
 
   sendSearch() {
-    const p = this.searchFormGroup.getRawValue()
-    this.sendSearchEvent.emit(p.searchText)
+    const p = this.searchFormGroup.getRawValue();
+    this.sendSearchEvent.emit(p.searchText);
   }
   
 }

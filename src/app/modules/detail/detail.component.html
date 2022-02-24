@@ -1,25 +1,23 @@
 <div class="wrapper-main">
-    <app-header
-    (sendSearchEvent)="sendSearch($event)">
-    </app-header>
+    <app-header (sendSearchEvent)="sendSearch($event)"></app-header>
 
     <div class="container">
         <app-categories-bar [items]="[]"></app-categories-bar>
         <div class="container-results" *ngIf="data">
             <div class="row">
                 <div class="col-lg-9 text-center">
-                    <img [src]="data.picture" alt="">
+                    <img [src]="data.item.picture" alt="">
                 </div>
                 <div class="col-lg-3">
                     <div class="d-flex flex-column">
                         <div class="specifications">
-                            <span>{{ data.condition == 'new' ? 'Nuevo' : 'Usado'}}</span>
+                            <span>{{ data.item.condition == 'new' ? 'Nuevo' : 'Usado'}}</span>
                             <span> - </span>
-                            <span *ngIf="data.sold_quantity > 0">{{ data.sold_quantity }} vendidos</span>
+                            <span *ngIf="data.item.sold_quantity > 0">{{ data.item.sold_quantity }} vendidos</span>
                         </div>
-                        <h2>{{ data.title }}</h2>
+                        <h2>{{ data.item.title }}</h2>
                         <div class="price">
-                            <span>{{ data.price.amount | currency }}</span>
+                            <span>{{ data.item.price.amount | currency }}</span>
                         </div>
                         <div class="button-cont">
                             <button class="btn btn-lg">Comprar</button>
