@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Description, ItemDetail } from 'src/app/model/itemDetail';
+import { Description, Detail, ItemDetail } from 'src/app/model/itemDetail';
 
 @Component({
   selector: 'app-detail',
@@ -9,7 +9,7 @@ import { Description, ItemDetail } from 'src/app/model/itemDetail';
 })
 export class DetailComponent implements OnInit {
 
-  public data: ItemDetail;
+  public data: Detail;
   public description: Description;
 
   constructor(
@@ -19,6 +19,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.data = this.route.snapshot.data.dataResolver.item;
+    console.log(this.data)
     this.description = this.route.snapshot.data.descriptionResolver;
   }
 

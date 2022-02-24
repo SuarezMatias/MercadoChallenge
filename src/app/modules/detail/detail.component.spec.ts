@@ -8,7 +8,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 
 import { DetailComponent } from './detail.component';
 import { Description, Detail, ItemDetail } from 'src/app/model/itemDetail';
-import { Author } from 'src/app/model/ItemSearch';
+import { Address, Author, ItemSearch, Price } from 'src/app/model/ItemSearch';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { HeaderComponent } from '../header/components/header.component';
@@ -56,11 +56,17 @@ describe('DetailComponent', () => {
     fixture.detectChanges();
   });
 
+  // it('should create', () => {
+  //   component.data = {
+  //     author: {} as Author,
+  //     item: {} as Detail
+  //   } as ItemDetail;    
+  //   component.description = {} as Description;
+  //   expect(component).toBeTruthy();
+  // });
+
   it('should create', () => {
-    component.data = {
-      author: {} as Author,
-      item: {} as Detail
-    } as ItemDetail;    
+    component.data = {} as Detail;    
     component.description = {} as Description;
     expect(component).toBeTruthy();
   });
