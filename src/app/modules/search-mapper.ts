@@ -93,7 +93,6 @@ export class SearchMapper {
     getCategories(filters: ItemFilter[]) : string [] {
         const categories = filters.find(x => x.id == 'category')?.values
         const categoriesArray: string [] = [];
-        console.log(categories) 
         if(categories) {
             categories.forEach(x => {
                 x.path_from_root.forEach(x => {

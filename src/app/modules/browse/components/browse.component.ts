@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { ItemSearch } from 'src/app/model/ItemSearch';
 import { ApiService } from '../../api.service';
 import { SearchMapper } from '../../search-mapper';
@@ -16,19 +17,28 @@ export class BrowseComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private searchMapper: SearchMapper,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
-  ngOnInit() {    
-    this.route.params.subscribe(params => {  
-      this.items$ = params.search ?  this.apiService.search(params.search) : of(true);      
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {  
+      this.items$ = params.search ?  this.apiService.search(params.search).pipe(catchError(this.handleError)) : of(true);      
     });         
+  }
+
+  handleError(error) {
+    return of(true);
   }
 
   sendSearch($event) {
     if ($event != '') {
-      this.items$ = this.apiService.search($event);
-      console.log('ob:', this.items$)            
+      // this.items$ = this.apiService.search($event);
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: { search: $event },
+        queryParamsHandling: 'merge'
+      })
     }
   }
 

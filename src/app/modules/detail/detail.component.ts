@@ -25,7 +25,11 @@ export class DetailComponent implements OnInit {
   }
 
   sendSearch($event) {
-    this.router.navigate(['/', $event]);
+    this.router.navigate(['/'], {
+      relativeTo: this.route,
+      queryParams: { search: $event },
+      queryParamsHandling: 'merge'
+    })
   }
 
 }
