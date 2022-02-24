@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Description } from 'src/app/model/itemDetail';
+import { Description, ItemDetail } from 'src/app/model/itemDetail';
 
 @Component({
   selector: 'app-detail',
@@ -8,8 +8,8 @@ import { Description } from 'src/app/model/itemDetail';
   styleUrls: ['./detail.component.sass']
 })
 export class DetailComponent implements OnInit {
-  data: any
-  description: Description
+  data: ItemDetail;
+  description: Description;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,9 +19,6 @@ export class DetailComponent implements OnInit {
   ngOnInit() {
     this.data = this.route.snapshot.data.dataResolver.item;
     this.description = this.route.snapshot.data.descriptionResolver;
-
-    this.data.price.amount = new Intl.NumberFormat().format(this.data.price.amount);
-
   }
 
   sendSearch($event) {
